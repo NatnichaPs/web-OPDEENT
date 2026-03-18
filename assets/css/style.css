@@ -381,8 +381,8 @@ button{font:inherit}
 .service-info p{margin:0;color:var(--muted)}
 .service-1{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/uphospp.png")}
 .service-2{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/uphospp.png")}
-.service-3{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/uphospp.png")}
-.service-4{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/uphospp.png")}
+.service-3{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/opd4.jpg")}
+.service-4{background-image:linear-gradient(rgba(10,28,66,.18), rgba(10,28,66,.18)), url("../image/ortho.jpg")}
 
 /* HIGHLIGHT */
 .highlight-section{padding-top:70px}
