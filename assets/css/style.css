@@ -192,7 +192,7 @@ button{font:inherit}
   background-image: url("../image/uphosp.jpg");
 }
 .hero-bg-3{
-  background-image:url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80");
+  background-image:urlurl("../image/opd4.jpg");
 }
 .hero-content{
   position:relative;
@@ -1150,4 +1150,35 @@ button{font:inherit}
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}.schedule-image {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.schedule-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.schedule-image img:hover {
+  transform: scale(1.05);
+}
+.schedule-image {
+  position: relative;
+}
+
+.schedule-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
