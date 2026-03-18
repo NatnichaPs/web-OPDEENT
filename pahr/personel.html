@@ -3,148 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>บุคลากร | งานพยาบาลผู้ป่วยนอกจักษุ โสต ศอ นาสิก</title>
+  <title>บุคลากร | งานพยาบาลผู้ป่วยนอก</title>
   <meta name="description" content="หน้าบุคลากรของงานพยาบาลผู้ป่วยนอก สำหรับเพิ่มรูปภาพและข้อมูลเจ้าหน้าที่ของหน่วยงาน" />
+  
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8+q46cDfLr9P7k9RwhKkMHpvLbHG9SrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: #f4f8fb;
+      color: #2c3e50;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-alt {
+      background: #ffffff;
+    }
+
+    .personnel-hero {
+      background: linear-gradient(135deg, #eaf6ff, #ffffff);
+      text-align: center;
+    }
+
+    /* ===== CARD ===== */
+    .person-card {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      padding-bottom: 20px;
+    }
+
+    .person-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    /* เอฟเฟคแสง */
+    .person-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(52,152,219,0.05));
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .person-card:hover::before {
+      opacity: 1;
+    }
+
+    /* ===== IMAGE ===== */
+    .person-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 20px 10px;
+    }
+
+    .person-photo {
+      width: 180px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: transform 0.4s ease;
+    }
+
+    .person-card:hover .person-photo {
+      transform: scale(1.05);
+    }
+
+    /* ===== TEXT ===== */
+    .person-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .person-role {
+      font-size: 14px;
+      color: #6c7a89;
+      margin: 5px 0 10px;
+    }
+
+    .person-contact a {
+      font-size: 14px;
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .person-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== GRID ===== */
+    .nurse-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    /* ===== LEADER ===== */
+    .leader-card {
+      max-width: 320px;
+      margin: 0 auto;
+      border: 2px solid #3498db20;
+    }
+
+    .leader-photo {
+      width: 200px;
+      height: 260px;
+    }
+
+    .person-badge {
+      display: inline-block;
+      background: #3498db;
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
+
 <body>
   <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
 
-  <!-- =========================
-    PAGE HEADER
-    ส่วนหัวหน้าบุคลากร
-  ========================== -->
   <header class="site-header inner-page-header">
     <div class="container header-inner">
-      <a href="../index.html" class="brand" aria-label="กลับหน้าแรก">
+      <a href="../index.html" class="brand">
         <span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span>
         <span class="brand-text">
           <strong>OPD Nursing EENT</strong>
           <small>หน้าบุคลากร</small>
         </span>
       </a>
-      <nav class="site-nav open-static" aria-label="เมนูหน้าบุคลากร">
+
+      <nav class="site-nav open-static">
         <ul>
           <li><a href="../index.html">หน้าแรก</a></li>
-          <li><a href="#team-grid">บุคลากร</a></li>
-          <li><a href="#usage-guide"></a></li>
+          <li><a href="#leader-section">หัวหน้าหน่วยงาน</a></li>
+          <li><a href="#nurse-section">บุคลากรพยาบาล</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- =========================
-      PERSONNEL HERO
-      คำอธิบายหน้าบุคลากร
-    ========================== -->
-    <section class="section hero-mini">
+
+    <!-- HERO -->
+    <section class="section hero-mini personnel-hero">
       <div class="container">
-        <div class="section-heading align-left">
+        <div class="section-heading">
           <span class="section-kicker">PERSONNEL PAGE</span>
-          <h1>หน้าเพิ่มรูปบุคลากรของหน่วยงาน</h1>
-          <p>
-            หน้านี้เตรียมโครงสร้างไว้สำหรับใส่รูปบุคลากร ชื่อ ตำแหน่ง และข้อมูลติดต่อของเจ้าหน้าที่ในหน่วยงานของคุณ
-            โดยสามารถคัดลอกการ์ดเพิ่มได้ตามจำนวนบุคลากรจริง
-          </p>
+          <h1>บุคลากรงานพยาบาลผู้ป่วยนอกจักษุ โสต ศอ นาสิก</h1>
+          <p>แสดงข้อมูลบุคลากรในรูปแบบทันสมัย สะอาด และเป็นมืออาชีพ</p>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-      TEAM GRID SECTION
-      การ์ดบุคลากรพร้อมพื้นที่รูปภาพ
-    ========================== -->
-    <section class="section section-alt" id="team-grid">
+    <!-- หัวหน้าหน่วยงาน -->
+    <section class="section section-alt" id="leader-section">
       <div class="container">
         <div class="section-heading">
-          <span class="section-kicker">TEAM MEMBERS</span>
-          <h2>บุคลากรในหน่วยงาน</h2>
-          <p>ตัวอย่างการ์ดบุคลากร 6 ใบ สามารถเพิ่มหรือลบได้ตามจริง</p>
+          <span class="section-kicker">HEAD OF UNIT</span>
+          <h2>หัวหน้าหน่วยงาน</h2>
         </div>
 
-        <div class="team-grid">
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 01</h3>
-            <p class="team-role">หัวหน้างานพยาบาลผู้ป่วยนอก</p>
-            <p class="team-desc">ใส่ประวัติโดยย่อ ความเชี่ยวชาญ หรือหน้าที่รับผิดชอบ</p>
-          </article>
+        <div class="leader-wrapper">
+          <article class="person-card leader-card">
+            <div class="person-image-wrap">
+              <img class="person-photo leader-photo" src="../assets/image/S__30376074.jpg" />
+            </div>
 
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 02</h3>
-            <p class="team-role">พยาบาลวิชาชีพ</p>
-            <p class="team-desc">ใช้เป็นพื้นที่แสดงตำแหน่ง หน่วยตรวจ หรือความรับผิดชอบหลัก</p>
-          </article>
+            <div class="person-content">
+              <span class="person-badge">หัวหน้าหน่วยงาน</span>
+              <h3>พว.วริศรา วิมานทอง</h3>
+              <p class="person-role">รักษาการแทนหัวหน้างานการพยาบาลผู้ป่วยนอก</p>
 
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 03</h3>
-            <p class="team-role">พยาบาลวิชาชีพ</p>
-            <p class="team-desc">แก้ไขข้อความนี้ภายหลังได้ตามข้อมูลจริงของหน่วยงาน</p>
-          </article>
-
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 04</h3>
-            <p class="team-role">ผู้ช่วยพยาบาล / เจ้าหน้าที่</p>
-            <p class="team-desc">พื้นที่นี้เหมาะสำหรับแสดงบทบาทและภารกิจโดยย่อ</p>
-          </article>
-
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 05</h3>
-            <p class="team-role">เจ้าหน้าที่ธุรการ</p>
-            <p class="team-desc">สามารถเปลี่ยนรูปเป็นรูปจริงได้โดยแทน div ด้วย img</p>
-          </article>
-
-          <article class="team-card">
-            <div class="team-photo placeholder-photo"><i class="fa-solid fa-user"></i></div>
-            <h3>ชื่อ-นามสกุล บุคลากร 06</h3>
-            <p class="team-role">เจ้าหน้าที่สนับสนุน</p>
-            <p class="team-desc">คัดลอกการ์ดนี้เพิ่มเพื่อรองรับจำนวนบุคลากรทั้งหมด</p>
+              <div class="person-contact">
+                <a href="mailto:warissara.wi@up.ac.th">
+                  <i class="fa-solid fa-envelope"></i> warissara.wi@up.ac.th
+                </a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-      USAGE GUIDE SECTION
-      วิธีเปลี่ยนจาก placeholder เป็นรูปจริง
-    ========================== -->
-    <section class="section" id="usage-guide">
+    <!-- บุคลากร -->
+    <section class="section" id="nurse-section">
       <div class="container">
         <div class="section-heading">
-          <span class="section-kicker">EDIT GUIDE</span>
-          <h2>วิธีใส่รูปจริงภายหลัง</h2>
+          <span class="section-kicker">NURSING TEAM</span>
+          <h2>บุคลากร</h2>
         </div>
 
-        <div class="guide-card soft-panel">
-<pre><code>&lt;!-- แทนที่ส่วนนี้ --&gt;
-&lt;div class="team-photo placeholder-photo"&gt;
-  &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt;
-&lt;/div&gt;
+        <div class="nurse-grid">
 
-&lt;!-- ด้วยรูปจริงแบบนี้ --&gt;
-&lt;img class="team-photo" src="../assets/images/person-01.jpg" alt="ชื่อบุคลากร" loading="lazy" /&gt;</code></pre>
+          <!-- CARD -->
+          <article class="person-card nurse-card">
+            <div class="person-image-wrap">
+              <img class="person-photo" src="../assets/image/2135.jpg" />
+            </div>
+            <div class="person-content">
+              <h3>พว.นันทกานต์ แสนรักษ์</h3>
+              <p class="person-role">พยาบาลสาขาเวชปฏิบัติทางตา</p>
+              <div class="person-contact">
+                <a href="#"><i class="fa-solid fa-envelope"></i> nunthakarn.sa@up.ac.th</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="person-card nurse-card">
+            <div class="person-image-wrap">
+              <img class="person-photo" src="../assets/image/1234.jpg" />
+            </div>
+            <div class="person-content">
+              <h3>พว.ณัฐณิชา พร้อมสุข</h3>
+              <p class="person-role">พยาบาลสาขาเวชปฏิบัติทางตา</p>
+              <div class="person-contact">
+                <a href="#"><i class="fa-solid fa-envelope"></i> natnicha.pr@up.ac.th</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="person-card nurse-card">
+            <div class="person-image-wrap">
+              <img class="person-photo" src="../assets/image/S__109731863.jpg" />
+            </div>
+            <div class="person-content">
+              <h3>พว.สุพัตรา อุดคำ</h3>
+              <p class="person-role">พยาบาลสาขาโสต ศอ นาสิก</p>
+              <div class="person-contact">
+                <a href="#"><i class="fa-solid fa-envelope"></i> supattra.ud@up.ac.th</a>
+              </div>
+            </div>
+          </article>
+<article class="person-card nurse-card">
+            <div class="person-image-wrap">
+              <img class="person-photo" src="../assets/image/S__26960019.jpg" />
+            </div>
+            <div class="person-content">
+              <h3>เกศรา สุวรรณ</h3>
+              <p class="person-role">ผู้ช่วยพยาบาล</p>
+              <div class="person-contact">
+                <a href="#"><i class="fa-solid fa-envelope"></i> ketsara.su@up.ac.th</a>
+              </div>
         </div>
       </div>
+      <article class="person-card nurse-card">
+            <div class="person-image-wrap">
+              <img class="person-photo" src="../assets/image/" />
+            </div>
+            <div class="person-content">
+              <h3>ปิ่นนภัทร บัวเหล็ก</h3>
+              <p class="person-role">ผู้ช่วยพยาบาล</p>
+              <div class="person-contact">
+                <a href="#"><i class="fa-solid fa-envelope"></i> pinnapat.bu@up.ac.th</a>
+              </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
         <h2>หน้าบุคลากร</h2>
-        <p>ออกแบบให้เพิ่มรูปและข้อมูลเจ้าหน้าที่ได้ง่าย</p>
+        <p>ออกแบบให้เพิ่มข้อมูลได้ง่าย</p>
       </div>
       <div class="footer-links">
         <a href="../index.html">กลับหน้าแรก</a>
       </div>
     </div>
   </footer>
+
 </body>
 </html>
